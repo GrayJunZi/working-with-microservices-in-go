@@ -24,3 +24,12 @@ Build highly available, scalable, resilient distributed applications using Go
     4. 使用高级消息队列协议(AMQP)启动和响应时间。
 
 一个前端web应用程序连接5个微服务。
+
+## 二、代理服务(Broker Service)
+
+安装依赖
+```bash
+go get github.com/go-chi/chi/v5
+go get github.com/go-chi/chi/v5/middleware
+go get github.com/go-chi/cors
+```
