@@ -33,3 +33,24 @@ go get github.com/go-chi/chi/v5
 go get github.com/go-chi/chi/v5/middleware
 go get github.com/go-chi/cors
 ```
+
+## 三、认证服务(Authentication Service)
+
+初始化
+```bash
+go init authenticaiton
+go work use authentication-service/
+go mod tidy
+```
+
+安装依赖
+```bash
+go get github.com/go-chi/chi/v5
+go get github.com/go-chi/chi/v5/middleware
+go get github.com/go-chi/cors
+go get github.com/jackc/pgconn
+go get github.com/jackc/pgx/v4
+go get github.com/jackc/pgx/stdlib
+go get golang.org/x/crypto/bcrypt
+go get -u github.com/tsawler/toolbox
+```
