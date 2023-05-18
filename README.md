@@ -51,6 +51,23 @@ go get github.com/go-chi/cors
 go get github.com/jackc/pgconn
 go get github.com/jackc/pgx/v4
 go get github.com/jackc/pgx/stdlib
-go get golang.org/x/crypto/bcrypt
 go get -u github.com/tsawler/toolbox
+```
+
+## 四、日志服务(Logger Service)
+
+初始化
+```bash
+go work use logger-service
+go mod init logger
+go mod tidy
+```
+
+安装依赖
+```bash
+go get go.mongodb.org/mongo-driver/mongo
+go get go.mongodb.org/mongo-driver/mongo/options
+go get github.com/go-chi/chi/v5
+go get github.com/go-chi/chi/v5/middleware
+go get github.com/go-chi/cors
 ```
