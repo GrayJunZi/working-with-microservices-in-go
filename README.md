@@ -58,8 +58,8 @@ go get -u github.com/tsawler/toolbox
 
 初始化
 ```bash
-go work use logger-service
 go mod init logger
+go work use logger-service
 go mod tidy
 ```
 
@@ -70,4 +70,21 @@ go get go.mongodb.org/mongo-driver/mongo/options
 go get github.com/go-chi/chi/v5
 go get github.com/go-chi/chi/v5/middleware
 go get github.com/go-chi/cors
+```
+
+## 五、邮件服务(Mail Service)
+
+初始化
+```bash
+go mod init mail
+go work use mail-service
+```
+
+安装依赖
+```bash
+go get github.com/go-chi/chi/v5
+go get github.com/go-chi/chi/v5/middleware
+go get github.com/go-chi/cors
+go get github.com/vanng822/go-premailer/premailer
+go get github.com/xhit/go-simple-mail/v2
 ```
