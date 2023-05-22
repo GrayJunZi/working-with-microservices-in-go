@@ -88,3 +88,21 @@ go get github.com/go-chi/cors
 go get github.com/vanng822/go-premailer/premailer
 go get github.com/xhit/go-simple-mail/v2
 ```
+
+## 六、监听服务(Listener Service)
+
+初始化
+```bash
+go mod init listener
+go work use listener-service
+```
+
+安装依赖
+```bash
+go get github.com/rabbitmq/amqp091-go
+```
+
+`broker-service` 安装依赖
+```bash
+go get github.com/rabbitmq/amqp091-go
+```
