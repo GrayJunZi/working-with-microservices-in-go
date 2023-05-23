@@ -108,3 +108,22 @@ go get github.com/rabbitmq/amqp091-go
 ```
 
 ## 七、RPC
+
+## 八、gRPC
+
+安装gRPC工具
+```bash
+go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.27
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1.2
+```
+
+生成gRPC代码
+```bash
+protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=paths=source_relative logs.proto
+```
+
+安装依赖
+```bash
+go get google.golang.org/grpc
+go get google.golang.org/protobuf
+```

@@ -51,6 +51,9 @@ func main() {
 	err = rpc.Register(new(RPCServer))
 	go app.rpcListen()
 
+	// 注册gRPC服务
+	go app.gRPCListen()
+
 	app.serve()
 }
 
