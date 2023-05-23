@@ -10,6 +10,9 @@
             <a id="brokerBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Test Broker</a>
             <a id="authBrokerBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Test Auth</a>
             <a id="logBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Test Log</a>
+            <a id="logRabbitMQBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Test Log via
+                RabbitMQ</a>
+            <a id="logRPCBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Test Log via RPC</a>
             <a id="mailBtn" class="btn btn-outline-secondary" href="javascript:void(0);">Test Mail</a>
 
             <div id="output" class="mt-5" style="outline: 1px solid silver; padding: 2em;">
@@ -100,8 +103,20 @@
     });
 
     logBtn.addEventListener("click", function () {
+        log();
+    });
+
+    logRabbitMQBtn.addEventListener('click', function () {
+        log('log-rabbitmq');
+    });
+
+    logRPCBtn.addEventListener('click', function () {
+        log('log-rpc');
+    });
+
+    function log(action = 'log') {
         const payload = {
-            action: "log",
+            action,
             log: {
                 name: "event",
                 data: "some kind of data"
@@ -131,7 +146,7 @@
             .catch((error) => {
                 output.innerHTML += `<br/><br/>Error: ${error}`;
             });
-    });
+    }
 
     mailBtn.addEventListener("click", function () {
         const payload = {

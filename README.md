@@ -106,3 +106,5 @@ go get github.com/rabbitmq/amqp091-go
 ```bash
 go get github.com/rabbitmq/amqp091-go
 ```
+
+## 七、RPC
