@@ -127,3 +127,106 @@ protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. --go-grpc_opt=p
 go get google.golang.org/grpc
 go get google.golang.org/protobuf
 ```
+
+## 九、Docker Swarm容器编排 
+
+构建镜像
+```bash
+docker build -f logger-service.dockerfile -t grayjunzi/logger-service:1.0.0 .
+```
+
+推送镜像到 Docker Hub 中
+```bash
+docker push grayjunzi/logger-service:1.0.0
+```
+
+登录 docker
+```bash
+docker login
+```
+
+初始化docker swarm
+```bash
+docker swarm init
+```
+
+查看 加入worker命令 
+```bash
+docker swarm join-token worker
+```
+
+查看 加入manager命令 
+```bash
+docker swarm join-token manager
+```
+
+部署swarm
+```bash
+docker stack deploy -c swarm.yml myapp
+```
+
+
+查看所有服务
+```bash
+docker service ls
+```
+
+### 伸缩服务(Scaling services)
+
+伸缩服务为3个实例
+```bash
+docker service scale myapp_listener-service=3
+```
+
+### 更新服务(Updating services)
+
+构建新版本镜像
+```bash
+docker build -f logger-service.dockerfile -t grayjunzi/logger-service:1.0.1 .
+```
+
+推送镜像到docker hub
+```bash
+docker push grayjunzi/logger-service:1.0.1
+```
+
+扩展服务规模
+```bash
+dcoker service scale myapp_logger-service=2
+```
+
+更新服务
+```bash
+docker service update --image grayjunzi/logger-service:1.0.1 myapp_logger-service
+```
+
+查看服务
+```bash
+dcoker service ls
+```
+
+### 停止 Docker Swarm
+
+将服务实例设置为0
+```bash
+docker service scale myapp_logger-service=0
+```
+
+移除所有服务
+```bash
+docker stack rm myapp
+```
+
+移除swarm
+```bash
+docker swarm leave
+```
+
+强制移除swarm
+```bash
+docker swarm leave -f
+```
+
+### Caddy
+
+Caddy 是一个开源Web服务器
