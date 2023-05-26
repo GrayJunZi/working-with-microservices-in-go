@@ -128,7 +128,7 @@ go get google.golang.org/grpc
 go get google.golang.org/protobuf
 ```
 
-## 九、Docker Swarm容器编排 
+## 九、Docker Swarm容器编排
 
 构建镜像
 ```bash
@@ -230,3 +230,130 @@ docker swarm leave -f
 ### Caddy
 
 Caddy 是一个开源Web服务器
+
+## 十、Kubernetes
+
+### minikube
+
+安装 minikube
+```bash
+curl -LO https://storage.googleapis.com/minikube/releases/latest/minikube-linux-amd64
+sudo install minikube-linux-amd64 /usr/local/bin/minikube
+```
+
+### kubectl
+
+安装 kubectl
+```bash
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+```
+
+修改 kubectl 权限
+```bash
+chmod +x ./kubectl
+```
+
+移动 kubectl
+```bash
+sudo mv ./kubectl /usr/local/bin/kubectl
+sudo chown root: /usr/local/bin/kubectl
+```
+
+查看 kubectl 版本
+```bash
+kubectl version --client
+```
+
+### 启动kubenetes集群
+
+启动minikube
+```bash
+minikube start --nodes=2
+```
+
+删除minikube
+```bash
+minikube delete
+```
+
+查看minikube状态
+```
+minikube status
+```
+
+关闭minikube
+```bash
+minikube stop
+```
+
+minikube 仪表盘
+```bash
+minikube dashboard
+```
+
+### kubectl命令
+
+查看pods
+```bash
+kubectl get pods
+```
+
+查看所有pods
+```bash
+kubectl get pods -A
+```
+
+查看所有服务
+```bash
+kubectl get svc
+```
+
+查看所有deployments
+```bash
+kubectl get deployments
+```
+
+执行 apply
+```bash
+kubectl apply -f ./k8s
+```
+
+查看服务日志
+```bash
+kubectl logs broker-services-6f754dd667-h9q22
+```
+
+删除deployment
+```bash
+kubectl delete deployments broker-services mongo rabbitmq
+```
+
+删除服务
+```bash
+kubectl delete svc broker-services mongo rabbitmq
+```
+
+暴露服务
+```bash
+kubectl expose deployment broker-services --type=LoadBalancer --port=8080 --target-port=8080
+```
+
+tunnel
+```bash
+minikube tunnel
+```
+
+启用ingress
+```bash
+minikube addons enable ingress
+```
+
+启用ingress-dns
+```bash
+minikube addons enable ingress-dns
+```
+
+查看ingress
+```bash
+kubectl get ingress
+```

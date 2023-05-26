@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: listener-services
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: listener-services
+  template:
+    metadata:
+      labels:
+        app: listener-services
+    spec:
+      containers:
+      - name: listener-services
+        image: "tsawler/listener-service:1.0.0"
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+          - containerPort: 80
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: listener-services
+spec:
+  selector:
+    name: listener-services
+  ports:
+    - protocol: TCP
+      name: main-port
+      port: 80
+      targetPort: 80
